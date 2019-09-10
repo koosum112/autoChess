@@ -1,0 +1,7 @@
+{
+  "name": "autoChess",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
