@@ -1,0 +1,113 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>建議牌組</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-toolbar>
+			<ion-searchbar showCancelButton="focus" animated="true" ionInput=""></ion-searchbar>
+		</ion-toolbar>
+		<ion-item-divider>
+		<!-- <ion-list-header> -->
+			
+				<ion-label>
+					<h2>版本：Patch 9.14</h2>
+				</ion-label>
+			
+		<!-- </ion-list-header> -->
+	</ion-item-divider>
+		<ng-container *ngFor="let _recomandation of recomandation">
+			<ion-item class="context" size="large" button lines="full" detail="true"
+				(click)="showDetail(_recomandation);"
+				[detailIcon]="(!_recomandation.isShowDetail)?'ios-arrow-forward':'ios-arrow-down'">
+				<ion-avatar slot="start">
+					<img src="/assets/icon/gold.png">
+				</ion-avatar>
+				<ion-grid>
+					<ion-row class="profession ion-justify-content-start">
+						<ion-col size="auto" *ngFor="let effect of _recomandation['later_stage'].effect">
+							<div>
+								<ion-thumbnail slot="end">
+									<ion-img [src]="'/assets/img/LOL/profession/' + effect['title'] +'.png'">
+									</ion-img>
+								</ion-thumbnail>
+								<ion-label>{{effect['title']}}</ion-label>
+								<ion-badge color="primary">{{effect['count']}}</ion-badge>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row class="hero ion-justify-content-start">
+						<ion-col size="auto" *ngFor="let hero of _recomandation['later_stage'].heros">
+							<div>
+								<ion-thumbnail slot="end">
+									<ion-img [src]="'/assets/img/LOL/heros/' + hero['name'] + '.png'"></ion-img>
+								</ion-thumbnail>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+			<ion-item class="detail" [hidden]="!_recomandation.isShowDetail" lines="full">
+				<span>
+					<ion-label position="undefined">早期：</ion-label>
+				</span>
+				<ion-grid>
+					<ion-row class="profession ion-justify-content-start">
+						<ion-col size="auto" *ngFor="let effect of _recomandation['early_stage'].effect">
+							<div>
+								<ion-thumbnail slot="end">
+									<ion-img [src]="'/assets/img/LOL/profession/' + effect['title'] +'.png'">
+									</ion-img>
+								</ion-thumbnail>
+								<ion-label>{{effect['title']}}</ion-label>
+								<ion-badge color="primary">{{effect['count']}}</ion-badge>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row class="hero ion-justify-content-start">
+						<ion-col size="auto" *ngFor="let hero of _recomandation['early_stage'].heros">
+							<div>
+								<ion-thumbnail slot="end">
+									<ion-img [src]="'/assets/img/LOL/heros/' + hero['name'] + '.png'"></ion-img>
+								</ion-thumbnail>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+			<ion-item class="detail" [hidden]="!_recomandation.isShowDetail" lines="full">
+				<span>
+					<ion-label position="undefined">中期：</ion-label>
+				</span>
+				<ion-grid>
+					<ion-row class="profession ion-justify-content-start">
+						<ion-col size="auto" *ngFor="let effect of _recomandation['medium_stage'].effect">
+							<div>
+								<ion-thumbnail slot="end">
+									<ion-img [src]="'/assets/img/LOL/profession/' + effect['title'] +'.png'">
+									</ion-img>
+								</ion-thumbnail>
+								<ion-label>{{effect['title']}}</ion-label>
+								<ion-badge color="primary">{{effect['count']}}</ion-badge>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row class="hero ion-justify-content-start">
+						<ion-col size="auto" *ngFor="let hero of _recomandation['medium_stage'].heros">
+							<div>
+								<ion-thumbnail slot="end">
+									<ion-img [src]="'/assets/img/LOL/heros/' + hero['name'] + '.png'"></ion-img>
+								</ion-thumbnail>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+		</ng-container>
+	</ion-list>
+</ion-content>
